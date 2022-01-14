@@ -758,6 +758,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84762503e3f2ab84187e0301529fdd73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  questionText: {fileID: 1837636549}
+  question: {fileID: 11400000, guid: 9174c9f0e7503c0459ef9701c62952f9, type: 2}
 --- !u!224 &508283875 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6241005817075848385, guid: 31705808e134437489557668f9fc4a55, type: 3}
