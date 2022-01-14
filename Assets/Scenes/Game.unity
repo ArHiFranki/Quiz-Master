@@ -132,7 +132,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6241005817075848384, guid: 31705808e134437489557668f9fc4a55, type: 3}
       propertyPath: m_Name
-      value: Button (2)
+      value: AnswerButton (2)
       objectReference: {fileID: 0}
     - target: {fileID: 6241005817075848385, guid: 31705808e134437489557668f9fc4a55, type: 3}
       propertyPath: m_Pivot.x
@@ -479,7 +479,7 @@ GameObject:
   - component: {fileID: 375991738}
   - component: {fileID: 375991737}
   m_Layer: 5
-  m_Name: Background
+  m_Name: BackgroundImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -551,7 +551,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6241005817075848384, guid: 31705808e134437489557668f9fc4a55, type: 3}
       propertyPath: m_Name
-      value: Button (3)
+      value: AnswerButton (3)
       objectReference: {fileID: 0}
     - target: {fileID: 6241005817075848385, guid: 31705808e134437489557668f9fc4a55, type: 3}
       propertyPath: m_Pivot.x
@@ -842,7 +842,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6241005817075848384, guid: 31705808e134437489557668f9fc4a55, type: 3}
       propertyPath: m_Name
-      value: Button (1)
+      value: AnswerButton (1)
       objectReference: {fileID: 0}
     - target: {fileID: 6241005817075848385, guid: 31705808e134437489557668f9fc4a55, type: 3}
       propertyPath: m_Pivot.x
@@ -1113,7 +1113,7 @@ GameObject:
   - component: {fileID: 1650165076}
   - component: {fileID: 1650165075}
   m_Layer: 5
-  m_Name: Title Text
+  m_Name: TitleText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1247,7 +1247,7 @@ GameObject:
   - component: {fileID: 1837636550}
   - component: {fileID: 1837636549}
   m_Layer: 5
-  m_Name: Question Text
+  m_Name: QuestionText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1378,7 +1378,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6241005817075848384, guid: 31705808e134437489557668f9fc4a55, type: 3}
       propertyPath: m_Name
-      value: Button
+      value: AnswerButton (0)
       objectReference: {fileID: 0}
     - target: {fileID: 6241005817075848385, guid: 31705808e134437489557668f9fc4a55, type: 3}
       propertyPath: m_Pivot.x
