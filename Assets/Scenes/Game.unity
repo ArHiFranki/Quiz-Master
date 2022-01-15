@@ -300,6 +300,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a41de75b59e257840a777cb26f6cdb21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeToCompleteQuestion: 15
+  timeToShowCorrectAnswer: 5
+  loadNextQuestion: 0
+  fillFraction: 0
 --- !u!1 &147807650
 GameObject:
   m_ObjectHideFlags: 0
@@ -875,6 +879,7 @@ MonoBehaviour:
   - {fileID: 1867815035}
   defaultAnswerSprite: {fileID: 21300000, guid: b043490be939ea240bcc11efe10db33e, type: 3}
   correctAnswerSprite: {fileID: 21300000, guid: 8fc4b034002331841a0f1c4861e202ab, type: 3}
+  timerImage: {fileID: 1107684070}
 --- !u!1 &508283874 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6241005817075848384, guid: 31705808e134437489557668f9fc4a55, type: 3}

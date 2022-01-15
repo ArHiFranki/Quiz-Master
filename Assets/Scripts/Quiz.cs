@@ -7,17 +7,45 @@ using System;
 
 public class Quiz : MonoBehaviour
 {
+    [Header("Questions")]
     [SerializeField] private TextMeshProUGUI questionText;
     [SerializeField] private QuestionSO question;
+
+    [Header("Answers")]
     [SerializeField] private GameObject[] answerButtons;
+
+    [Header("Button Colors")]
     [SerializeField] private Sprite defaultAnswerSprite;
     [SerializeField] private Sprite correctAnswerSprite;
 
+    [Header("Timer")]
+    [SerializeField] private Image timerImage;
+
     private int correctAnswerIndex;
+    private bool hasAnsweredEarly;
+    private Timer timer;
 
     private void Start()
     {
+        timer = FindObjectOfType<Timer>();
         DisplayQuestion();
+    }
+
+    private void Update()
+    {
+        timerImage.fillAmount = timer.fillFraction;
+
+        if (timer.loadNextQuestion)
+        {
+            hasAnsweredEarly = false;
+            GetNextQuestion();
+            timer.loadNextQuestion = false;
+        }
+        else if (!hasAnsweredEarly && !timer.isAnsweringQuestion)
+        {
+            DisplayAnswer(-1);
+            SetButtonState(false);
+        }
     }
 
     private void DisplayQuestion()
@@ -32,6 +60,14 @@ public class Quiz : MonoBehaviour
     }
 
     public void OnAnswerSelected(int index)
+    {
+        hasAnsweredEarly = true;
+        DisplayAnswer(index);
+        SetButtonState(false);
+        timer.CancelTimer();
+    }
+
+    private void DisplayAnswer(int index)
     {
         Image buttonImage;
 
@@ -50,8 +86,6 @@ public class Quiz : MonoBehaviour
             buttonImage = answerButtons[correctAnswerIndex].GetComponent<Image>();
             buttonImage.sprite = correctAnswerSprite;
         }
-
-        SetButtonState(false);
     }
 
     public void GetNextQuestion()
