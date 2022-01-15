@@ -20,14 +20,19 @@ public class Quiz : MonoBehaviour
     [Header("Timer")]
     [SerializeField] private Image timerImage;
 
+    [Header("Scoring")]
+    [SerializeField] private TextMeshProUGUI scoreText;
+
     private int correctAnswerIndex;
     private bool hasAnsweredEarly;
     private QuestionSO currentQuestion;
     private Timer timer;
+    private ScoreKeeper scoreKeeper;
 
     private void Start()
     {
         timer = FindObjectOfType<Timer>();
+        scoreKeeper = FindObjectOfType<ScoreKeeper>();
     }
 
     private void Update()
@@ -64,6 +69,7 @@ public class Quiz : MonoBehaviour
         DisplayAnswer(index);
         SetButtonState(false);
         timer.CancelTimer();
+        scoreText.text = "Score: " + scoreKeeper.CalculateScore() + "%";
     }
 
     private void DisplayAnswer(int index)
@@ -75,12 +81,13 @@ public class Quiz : MonoBehaviour
             questionText.text = "Правильно!";
             buttonImage = answerButtons[index].GetComponent<Image>();
             buttonImage.sprite = correctAnswerSprite;
+            scoreKeeper.IncrementCorrectAnswers();
         }
         else
         {
             correctAnswerIndex = currentQuestion.GetCorrectAnswerIndex();
             string correctAnswer = currentQuestion.GetAnswer(correctAnswerIndex);
-            questionText.text = "Не правильно! Правильный ответ:\n" + correctAnswer;
+            questionText.text = "Hе правильно! Правильный ответ:\n" + correctAnswer;
 
             buttonImage = answerButtons[correctAnswerIndex].GetComponent<Image>();
             buttonImage.sprite = correctAnswerSprite;
@@ -95,6 +102,7 @@ public class Quiz : MonoBehaviour
             SetDefaultButtonSprites();
             GetRandomQuestion();
             DisplayQuestion();
+            scoreKeeper.IncrementQuestionsSeen();
         }
     }
 
