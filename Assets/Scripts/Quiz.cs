@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-using System;
 
 public class Quiz : MonoBehaviour
 {
     [Header("Questions")]
     [SerializeField] private TextMeshProUGUI questionText;
-    [SerializeField] private QuestionSO question;
+    [SerializeField] private List<QuestionSO> questions = new List<QuestionSO>();
 
     [Header("Answers")]
     [SerializeField] private GameObject[] answerButtons;
@@ -23,12 +22,12 @@ public class Quiz : MonoBehaviour
 
     private int correctAnswerIndex;
     private bool hasAnsweredEarly;
+    private QuestionSO currentQuestion;
     private Timer timer;
 
     private void Start()
     {
         timer = FindObjectOfType<Timer>();
-        DisplayQuestion();
     }
 
     private void Update()
@@ -50,12 +49,12 @@ public class Quiz : MonoBehaviour
 
     private void DisplayQuestion()
     {
-        questionText.text = question.GetQuestion();
+        questionText.text = currentQuestion.GetQuestion();
 
         for (int i = 0; i < answerButtons.Length; i++)
         {
             TextMeshProUGUI buttonText = answerButtons[i].GetComponentInChildren<TextMeshProUGUI>();
-            buttonText.text = question.GetAnswer(i);
+            buttonText.text = currentQuestion.GetAnswer(i);
         }
     }
 
@@ -71,7 +70,7 @@ public class Quiz : MonoBehaviour
     {
         Image buttonImage;
 
-        if (index == question.GetCorrectAnswerIndex())
+        if (index == currentQuestion.GetCorrectAnswerIndex())
         {
             questionText.text = "Правильно!";
             buttonImage = answerButtons[index].GetComponent<Image>();
@@ -79,9 +78,9 @@ public class Quiz : MonoBehaviour
         }
         else
         {
-            correctAnswerIndex = question.GetCorrectAnswerIndex();
-            string correctAnswer = question.GetAnswer(correctAnswerIndex);
-            questionText.text = "Ошибка! Правильный ответ:\n" + correctAnswer;
+            correctAnswerIndex = currentQuestion.GetCorrectAnswerIndex();
+            string correctAnswer = currentQuestion.GetAnswer(correctAnswerIndex);
+            questionText.text = "Не правильно! Правильный ответ:\n" + correctAnswer;
 
             buttonImage = answerButtons[correctAnswerIndex].GetComponent<Image>();
             buttonImage.sprite = correctAnswerSprite;
@@ -90,9 +89,24 @@ public class Quiz : MonoBehaviour
 
     public void GetNextQuestion()
     {
-        SetButtonState(true);
-        SetDefaultButtonSprites();
-        DisplayQuestion();
+        if (questions.Count > 0)
+        {
+            SetButtonState(true);
+            SetDefaultButtonSprites();
+            GetRandomQuestion();
+            DisplayQuestion();
+        }
+    }
+
+    private void GetRandomQuestion()
+    {
+        int index = Random.Range(0, questions.Count);
+        currentQuestion = questions[index];
+
+        if (questions.Contains(currentQuestion))
+        {
+            questions.Remove(currentQuestion);
+        }
     }
 
     private void SetDefaultButtonSprites()

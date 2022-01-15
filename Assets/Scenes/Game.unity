@@ -304,6 +304,7 @@ MonoBehaviour:
   timeToShowCorrectAnswer: 5
   loadNextQuestion: 0
   fillFraction: 0
+  isAnsweringQuestion: 0
 --- !u!1 &147807650
 GameObject:
   m_ObjectHideFlags: 0
@@ -871,7 +872,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   questionText: {fileID: 1837636549}
-  question: {fileID: 11400000, guid: 9174c9f0e7503c0459ef9701c62952f9, type: 2}
+  questions:
+  - {fileID: 11400000, guid: 9174c9f0e7503c0459ef9701c62952f9, type: 2}
+  - {fileID: 11400000, guid: eeccbe2ad08becc4ab09779b8193e6e3, type: 2}
+  - {fileID: 11400000, guid: f4124effa0f3b534aaf451d03737bd33, type: 2}
+  - {fileID: 11400000, guid: ec3cdc068ec14424f9e80d5d1df7f7e8, type: 2}
+  - {fileID: 11400000, guid: 4a8eb4939ac7d634ab9d8eb777c9e916, type: 2}
   answerButtons:
   - {fileID: 508283874}
   - {fileID: 800647056}
