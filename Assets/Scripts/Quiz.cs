@@ -16,6 +16,11 @@ public class Quiz : MonoBehaviour
 
     private void Start()
     {
+        DisplayQuestion();
+    }
+
+    private void DisplayQuestion()
+    {
         questionText.text = question.GetQuestion();
 
         for (int i = 0; i < answerButtons.Length; i++)
