@@ -37,6 +37,10 @@ public class Quiz : MonoBehaviour
     {
         timer = FindObjectOfType<Timer>();
         scoreKeeper = FindObjectOfType<ScoreKeeper>();
+    }
+
+    private void Start()
+    {
         progressBar.maxValue = questions.Count;
         progressBar.value = 0;
     }
